@@ -1,0 +1,16 @@
+// use prisma-8
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+  posts    Todo[]
+}
+
+model Todo {
+  id     Int     @id @default(autoincrement())
+  title  String
+  done   Boolean @default(false)
+  userId Int
+  user   User    @relation(fields: [userId], references: [id])
+}
