@@ -27,6 +27,7 @@ jobs:
 
       - name: ssh on Vm
         run: |
+          pwd
           ls -a
           echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
           chmod 700 /home/runner/ssh_key
