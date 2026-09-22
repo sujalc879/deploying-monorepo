@@ -25,10 +25,4 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-backend:${{ github.sha }}
 
-      - name: ssh on Vm
-        run: |
-          pwd
-          ls -a
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
-          chmod 700 /home/runner/ssh_key
-          ssh -o StrictHostKeyChecking=no -i ~/ssh_key root@8.231.71.120 -t "docker stop user_backend && docker run --name user_backend -d -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/todo-backend:${{ github.sha }}"
+          ## ssh into vm
